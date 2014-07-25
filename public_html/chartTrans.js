@@ -1,0 +1,63 @@
+google.load("visualization", "1", {packages:["corechart"]});
+
+function chartTransactions()
+{
+  //Check if month is empty
+  if(document.getElementById("chartMonth").value === 0){
+      alert("Please select a Month to Chart. Year defaults to current year if left blank.");
+      return;
+  }  
+  var xmlHttp = getXMLHttp();
+  var postString = '';
+  
+  xmlHttp.onreadystatechange = function()
+  {
+    if(xmlHttp.readyState == 4)
+    {
+      ChartResponse(xmlHttp.responseText);
+    }
+  }
+  
+  //post parameters to grab relevant data to chart
+  postString = "chartMonth=" + document.getElementById("chartMonth").value;
+  if(document.getElementById("chartYear").value > 0){
+    postString += "&chartYear=" + document.getElementById("chartYear").value;
+  }else{
+    postString += "&chartYear=" + new Date().getFullYear();  
+  }
+
+  
+  xmlHttp.open("POST", "chartTrans.php", true);
+  xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlHttp.send(postString);
+}
+
+function ChartResponse(responseText){
+        
+        //Convert responseText into json object
+        //array is needed to create google chart
+        var parsed = JSON.parse(responseText);
+        var array = [];
+        
+        //Push all the relevant data from the 
+        //JSON object into the array
+        array.push(["Monthly Spending","In US Dollars"]);
+        array.push(['groceries',parsed.groceries]);
+        array.push(['bills', parsed.bills]);
+        array.push(['gas', parsed.gas]);
+        array.push(['food', parsed.food]);
+        array.push(['misc', parsed.misc]);
+        array.push(['fees', parsed.fees]);
+        array.push(['frivolous', parsed.frivolous]);
+        
+        //Create data table from the array
+        var data = google.visualization.arrayToDataTable(array);
+        var options = {
+          title: 'Monthly Spending'
+        };
+        
+        //Create chart
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+
+}
