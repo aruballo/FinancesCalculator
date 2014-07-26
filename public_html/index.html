@@ -20,99 +20,105 @@ and open the template in the editor.
 
     </head>
     <body> 
-        <div id="transFormDiv">
-            <form id="transForm" name="transForm" action="transactions.php" 
-                  method="post" onsubmit="return validateTransForm();">
+        <div id="formsWrapper">   
+            <div id="transFormDiv">
+                <form id="transForm" name="transForm" action="transactions.php" 
+                      method="post" onsubmit="return validateTransForm();">
 
-                <div>
-                    <label for="transAmt"> Transaction Amount </label>   
-                    <input type="number" step="any" name="transAmt"/>
-                </div>
-                <div>
-                    <label for="transCat"> Transaction Category </label>   
-                    <select name="transCat">
-                        <option value="groceries">Groceries</option>
-                        <option value="bills">Bills</option>
-                        <option value="gas">Gas</option>
-                        <option value="food">Food</option>
-                        <option value="misc">Miscellaneous (but needed)</option>
-                        <option value="fees">Fees</option>
-                        <option value="frivolous">Frivolous spending</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="datepicker">Transaction Date <br></label>
-                    <input type="text" id="datepicker" name="transDate">
-                </div>    
-                <div>
-                    <label for="transDesc">Transaction Description </label>
-                    <textarea rows="6" cols="50" name="transDesc"></textarea>
-                </div>
-                <div>
-                    <button type="submit"> Record Transaction </button>
-                </div>    
-            </form>
+                    <div>
+                        <label for="transAmt"> Transaction Amount </label>   
+                        <input type="number" step="any" name="transAmt"/>
+                    </div>
+                    <div>
+                        <label for="transCat"> Transaction Category </label>   
+                        <select name="transCat">
+                            <option value="groceries">Groceries</option>
+                            <option value="bills">Bills</option>
+                            <option value="gas">Gas</option>
+                            <option value="food">Food</option>
+                            <option value="misc">Miscellaneous (but needed)</option>
+                            <option value="fees">Fees</option>
+                            <option value="frivolous">Frivolous spending</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="datepicker">Transaction Date <br></label>
+                        <input type="text" id="datepicker" name="transDate">
+                    </div>    
+                    <div>
+                        <label for="transDesc">Transaction Description </label>
+                        <textarea rows="6" cols="50" name="transDesc"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit"> Record Transaction </button>
+                    </div>    
+                </form>
+            </div>
+            <div id="chartFormDiv">
+                <form id="chartForm">
+                  <div>
+                        <label for="chartMonth">Chart Month <br></label>   
+                        <select name="chartMonth" id="chartMonth">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="chartYear"> Chart Year <br> </label>   
+                        <input type="number" step="1" name="chartYear" id="chartYear"/>
+                    </div>
+                    <div>
+                        <button type="button" onclick="chartTransactions()"> Chart Transactions</button>
+                    </div> 
+                </form>
+            </div>
+            <div id="listFormDiv">
+                <form id="listForm">
+                    <div>
+                        <label for="listMonth">List Month <br></label>   
+                        <select name="listMonth" id="listMonth">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="listYear"> List Year <br> </label>   
+                        <input type="number" step="1" name="listYear" id="listYear"/>
+                    </div>
+                    <div>
+                        <button type="button" onclick="listTransactions()"> List Transactions </button>
+                    </div> 
+                </form>
+            </div>
         </div>
-        <div id="chartFormDiv">
-            <form id="chartForm">
-              <div>
-                    <label for="chartMonth">Chart Month <br></label>   
-                    <select name="chartMonth" id="chartMonth">
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="chartYear"> Chart Year <br> </label>   
-                    <input type="number" step="1" name="chartYear" id="chartYear"/>
-                </div>
-                <div>
-                    <button type="button" onclick="chartTransactions()"> Chart Transactions</button>
-                </div> 
-            </form>
-        </div>
-        <div id="listFormDiv">
-            <form id="listForm">
-                <div>
-                    <label for="listMonth">List Month <br></label>   
-                    <select name="listMonth" id="listMonth">
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="listYear"> List Year <br> </label>   
-                    <input type="number" step="1" name="listYear" id="listYear"/>
-                </div>
-                <div>
-                    <button type="button" onclick="listTransactions()"> List Transactions </button>
-                </div> 
-            </form>
-        </div>
-        <div>
-            <div id="piechart" style="width: 700px; height: 500px; display:inline-block"></div>
-            <div id="transTable" style="display:inline-block"></div>
-        </div> 
+        <div id="chartTableWrapper">
+            <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
+                <div id="piechart" style="width: 700px; height: 500px;"></div>
+            </div>
+            <div style="display:inline-block">
+                <div id="transTable" style="display:inline-block"></div>
+            </div> 
+        </div>    
         <script src="moment.js"></script>
         <script src="pikaday.js"></script>
         <script>
