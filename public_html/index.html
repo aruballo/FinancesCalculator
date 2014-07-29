@@ -6,17 +6,21 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        
         <title>Finances Calculator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="transactions.css">
         <link rel="stylesheet" href="css/pikaday.css">
+        <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="httpRequest.js"></script>
         <script type="text/javascript" src="listTrans.js"></script>
         <script type="text/javascript" src="chartTrans.js"></script>
         <script type="text/javascript" src="validateTransForm.js"></script>
-        
+        <script type="text/javascript" src="jquery.tablesorter.js"></script> 
+        <script type="text/javascript" src="jquery.tablesorter.pager.js"></script> 
 
     </head>
     <body> 
@@ -116,7 +120,7 @@ and open the template in the editor.
                 <div id="piechart" style="width: 700px; height: 500px;"></div>
             </div>
             <div style="display:inline-block">
-                <div id="transTable" style="display:inline-block"></div>
+                <div id="transTableDiv" style="display:inline-block"></div>
             </div> 
         </div>    
         <script src="moment.js"></script>

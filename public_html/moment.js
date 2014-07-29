@@ -4,6 +4,8 @@
 //! license : MIT
 //! momentjs.com
 
+//This script is so that I can use the date format of mm/dd/yyyy 
+//when selecting a date with the pikaday calendar. 
 (function (undefined) {
 
     /************************************

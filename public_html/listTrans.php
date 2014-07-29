@@ -2,14 +2,17 @@
 
     //This script creates an html table and outputs all the transactions
     //for the month and year passed.
-
-    echo "<table style='width:300px'>" .
+    echo "<table id='transTable' style='width:300px' class='tablesorter'>" .
+    "<thead>" .        
     "<tr>" . 
-    "<td>Transaction Amount</td>" .
-    "<td>Category</td>".
-    "<td>Description</td>".
-    "<td>Date Entered</td>".        
-    "</tr>";
+    "<th>Transaction Amount</td>" .
+    "<th>Category</td>".
+    "<th>Description</td>".
+    "<th>Date Entered</td>".        
+    "</tr>".
+    "</thead>".
+    "<tbody>";        
+            
     
     $con = mysqli_connect("localhost","aruballos","rubanto20", "transactions");
 
@@ -36,5 +39,21 @@
     }
     
     mysqli_close($con);
+    echo "</tbody>";
     echo "</table>";
+    echo '<div id="pager" class="pager">' .
+	 '<form>'.
+            '<img src="addons/pager/icons/first.png" class="first"/>'.
+	    '<img src="addons/pager/icons/prev.png" class="prev"/>'.
+	    '<input type="text" class="pagedisplay"/>'.
+            '<img src="addons/pager/icons/next.png" class="next"/>'.
+            '<img src="addons/pager/icons/last.png" class="last"/>'.
+	    '<select class="pagesize">'.
+		'<option selected="selected"  value="10">10</option>'.
+			'<option value="20">20</option>'.
+			'<option value="30">30</option>'.
+			'<option  value="40">40</option>'.
+	   '</select>'.
+	 '</form>'.
+         '</div>';
 ?>
