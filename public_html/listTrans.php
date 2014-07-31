@@ -11,6 +11,14 @@
     "<th>Date Entered</td>".        
     "</tr>".
     "</thead>".
+    "<tfoot>" .        
+    "<tr>" . 
+    "<th>Transaction Amount</td>" .
+    "<th>Category</td>".
+    "<th>Description</td>".
+    "<th>Date Entered</td>".        
+    "</tr>".
+    "</tfoot>".            
     "<tbody>";        
             
     
@@ -41,7 +49,7 @@
     mysqli_close($con);
     echo "</tbody>";
     echo "</table>";
-    echo '<div id="pager" class="pager">' .
+    echo '<div id="pager" class="pager" style="position: static;">' .
 	 '<form>'.
             '<img src="addons/pager/icons/first.png" class="first"/>'.
 	    '<img src="addons/pager/icons/prev.png" class="prev"/>'.
