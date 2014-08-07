@@ -2,7 +2,7 @@
 
     //This script creates an html table and outputs all the transactions
     //for the month and year passed.
-    echo "<table id='transTable' style='width:300px' class='tablesorter'>" .
+    echo "<table id='transTable' style='width:700px' class='tablesorter'>" .
     "<thead>" .        
     "<tr>" . 
     "<th>Transaction Amount</td>" .
@@ -57,7 +57,7 @@
             '<img src="addons/pager/icons/next.png" class="next"/>'.
             '<img src="addons/pager/icons/last.png" class="last"/>'.
 	    '<select class="pagesize">'.
-		'<option selected="selected"  value="10">10</option>'.
+		'<option value="10">10</option>'.
 			'<option value="20">20</option>'.
 			'<option value="30">30</option>'.
 			'<option  value="40">40</option>'.
