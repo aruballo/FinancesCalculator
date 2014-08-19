@@ -2,8 +2,6 @@
 
     //This script grabs the sums of each table column based on the month and year provided
     //and outputs it into valid JSON format text
-
-
     $con = mysqli_connect("localhost","aruballos","rubanto20", "transactions");
 
     if (mysqli_connect_errno()){

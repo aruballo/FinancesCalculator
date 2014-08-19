@@ -27,6 +27,6 @@ function listTransactions()
 
 function ListResponse(responseText){
     document.getElementById("transTableDiv").innerHTML = responseText;
-    $("#transTable").tablesorter().tablesorterPager({container: $("#pager")}); 
+     $("#transTable").tablesorter().tablesorterPager({container: $("#pager")});
 }
 

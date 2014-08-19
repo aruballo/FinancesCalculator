@@ -1,9 +1,9 @@
-#chartFormDiv, #listFormDiv{
+#chartFormDiv, #listFormDiv, #yearAvgDiv{
     position: relative;
     top: -145px;
 }
 
-#transFormDiv, #chartFormDiv, #listFormDiv{
+#transFormDiv, #chartFormDiv, #listFormDiv, #yearAvgDiv{
     display:inline-block;   
 }
 
@@ -24,6 +24,14 @@
 }
 
 #listForm {
+    width: 400px;
+    /* To see the outline of the form */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+#yearAvgForm {
     width: 400px;
     /* To see the outline of the form */
     padding: 1em;

@@ -38,7 +38,7 @@ function ChartResponse(responseText){
         //array is needed to create google chart
         var parsed = JSON.parse(responseText);
         var array = [];
-        
+        var sum = 0;
         //Push all the relevant data from the 
         //JSON object into the array
         array.push(["Monthly Spending","In US Dollars"]);
@@ -59,5 +59,6 @@ function ChartResponse(responseText){
         //Create chart
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
-
+        sum = parsed.groceries + parsed.bills + parsed.gas + parsed.food + parsed.misc + parsed.fees + parsed.frivolous;
+        document.getElementById('total').innerHTML = sum;
 }
