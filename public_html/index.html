@@ -10,24 +10,23 @@ and open the template in the editor.
         <title>Finances Calculator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="transactions.css">
+        <link rel="stylesheet" type="text/css" href="css/transactions.css">
         <link rel="stylesheet" href="css/pikaday.css">
-        <script type="text/javascript" src="jquery-1.11.1.js"></script>
-        <!--<script type="text/javascript" src="jquery-migrate-1.2.1.js"></script> -->
+        <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript" src="httpRequest.js"></script>
-        <script type="text/javascript" src="listTrans.js"></script>
-        <script type="text/javascript" src="chartTrans.js"></script>
-        <script type="text/javascript" src="listYearChart.js"></script>
-        <script type="text/javascript" src="validateTransForm.js"></script>
-        <script type="text/javascript" src="jquery.tablesorter.js"></script> 
-        <script type="text/javascript" src="jquery.tablesorter.pager.js"></script> 
+        <script type="text/javascript" src="js/httpRequest.js"></script>
+        <script type="text/javascript" src="js/listTrans.js"></script>
+        <script type="text/javascript" src="js/chartTrans.js"></script>
+        <script type="text/javascript" src="js/listYearChart.js"></script>
+        <script type="text/javascript" src="js/validateTransForm.js"></script>
+        <script type="text/javascript" src="js/jquery.tablesorter.js"></script> 
+        <script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script> 
 
     </head>
     <body> 
         <div id="formsWrapper">   
             <div id="transFormDiv">
-                <form id="transForm" name="transForm" action="transactions.php" 
+                <form id="transForm" name="transForm" action="php/transactions.php" 
                       method="post" onsubmit="return validateTransForm();">
 
                     <div>
@@ -153,11 +152,11 @@ and open the template in the editor.
             </div>
             <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
                 <div id="barchart" style="width: 700px; height: 500px;"></div>
-                <div id="total"> </div>
+                <div id="total2"> </div>
             </div>
         </div>    
-        <script src="moment.js"></script>
-        <script src="pikaday.js"></script>
+        <script src="js/moment.js"></script>
+        <script src="js/pikaday.js"></script>
         <script>
 
             var picker = new Pikaday(
