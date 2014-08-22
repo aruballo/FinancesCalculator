@@ -31,19 +31,19 @@
         $Sum = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear;
     }
     else{
-        $Jan = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=1 AND transcat='" . $chartCat;
-        $Feb = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=2 AND transcat='" . $chartCat;
-        $Mar = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=3 AND transcat='" . $chartCat;
-        $Apr = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=4 AND transcat='" . $chartCat;
-        $May = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=5 AND transcat='" . $chartCat;
-        $Jun = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=6 AND transcat='" . $chartCat;
-        $Jul = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=7 AND transcat='" . $chartCat;
-        $Aug = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=8 AND transcat='" . $chartCat;
-        $Sep = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=9 AND transcat='" . $chartCat;
-        $Oct = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=10 AND transcat='" . $chartCat;
-        $Nov = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=11 AND transcat='" . $chartCat;
-        $Dec = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=12 AND transcat='" . $chartCat;
-        $Sum = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND transCat='" . $chartCat;
+        $Jan = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=1 AND transcat='" . $chartCat . "'";
+        $Feb = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=2 AND transcat='" . $chartCat . "'";
+        $Mar = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=3 AND transcat='" . $chartCat . "'";
+        $Apr = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=4 AND transcat='" . $chartCat . "'";
+        $May = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=5 AND transcat='" . $chartCat . "'";
+        $Jun = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=6 AND transcat='" . $chartCat . "'";
+        $Jul = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=7 AND transcat='" . $chartCat . "'";
+        $Aug = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=8 AND transcat='" . $chartCat . "'";
+        $Sep = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=9 AND transcat='" . $chartCat . "'";
+        $Oct = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=10 AND transcat='" . $chartCat . "'";
+        $Nov = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=11 AND transcat='" . $chartCat . "'";
+        $Dec = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND month(transdate)=12 AND transcat='" . $chartCat . "'";
+        $Sum = "SELECT SUM(transamt) FROM trans WHERE year(transdate)=" . $chartYear . " AND transCat='" . $chartCat . "'";
     }
     
     $JanResult = mysqli_query($con, $Jan);

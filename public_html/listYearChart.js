@@ -56,7 +56,7 @@ function yearChartResponse(responseText){
    //Create data table from the array
    var data = google.visualization.arrayToDataTable(array);
    var options = {
-       title: 'Yearly Spending'
+       title: 'Yearly Spending - ' + document.getElementById("avgCat").value
    };
    
    var chart = new google.visualization.BarChart(document.getElementById('barchart'));
