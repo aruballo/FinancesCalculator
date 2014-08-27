@@ -12,23 +12,21 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/transactions.css">
         <link rel="stylesheet" href="css/pikaday.css">
-        <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript" src="js/httpRequest.js"></script>
-        <script type="text/javascript" src="js/listTrans.js"></script>
-        <script type="text/javascript" src="js/chartTrans.js"></script>
-        <script type="text/javascript" src="js/listYearChart.js"></script>
-        <script type="text/javascript" src="js/validateTransForm.js"></script>
-        <script type="text/javascript" src="js/jquery.tablesorter.js"></script> 
-        <script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script> 
+        <link rel="stylesheet" href="css/jquery-ui.css">
 
     </head>
     <body> 
-        <div id="formsWrapper">   
-            <div id="transFormDiv">
-                <form id="transForm" name="transForm" action="php/transactions.php" 
-                      method="post" onsubmit="return validateTransForm();">
-
+        <div id="tabs">   
+            <ul>
+                <li><a href="#tabs-1">Record</a></li>
+                <li><a href="#tabs-2">Chart</a></li>
+                <li><a href="#tabs-3">Grid</a></li>
+                <li><a href="#tabs-4">Yearly Chart</a></li>
+            </ul>
+            <div id="tabs-1">
+                <div id="transFormDiv">
+                    <form id="transForm" name="transForm" action="php/transactions.php" 
+                       method="post" onsubmit="return validateTransForm();">
                     <div>
                         <label for="transAmt"> Transaction Amount </label>   
                         <input type="number" step="any" name="transAmt"/>
@@ -56,105 +54,126 @@ and open the template in the editor.
                     <div>
                         <button type="submit"> Record Transaction </button>
                     </div>    
-                </form>
+                    </form>
+                </div>
+            </div>    
+            <div id="tabs-2">    
+                <div id="chartFormDiv">
+                    <form id="chartForm">
+                        <div>
+                            <label for="chartMonth">Chart Month <br></label>   
+                            <select name="chartMonth" id="chartMonth">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                             </select>
+                        </div>
+                        <div>
+                            <label for="chartYear"> Chart Year <br> </label>   
+                            <input type="number" step="1" name="chartYear" id="chartYear"/>
+                       </div>
+                       <div>
+                            <button type="button" onclick="chartTransactions()"> Chart Transactions</button>
+                       </div> 
+                    </form>
+                </div>
+                <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
+                    <div id="piechart" style="width: 700px; height: 500px;"></div>
+                    <div id="total"> </div>
+                </div>
+            </div>    
+            <div id="tabs-3">
+                <div id="listFormDiv">
+                    <form id="listForm">
+                        <div>
+                            <label for="listMonth">List Month <br></label>   
+                            <select name="listMonth" id="listMonth">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="listYear"> List Year <br> </label>   
+                            <input type="number" step="1" name="listYear" id="listYear"/>
+                        </div>
+                        <div>
+                            <button type="button" onclick="listTransactions()"> List Transactions </button>
+                        </div> 
+                    </form>
+                </div>
+                <div style="display:inline-block">
+                    <div id="transTableDiv" style="display:inline-block">
+                    </div>
+                </div>    
             </div>
-            <div id="chartFormDiv">
-                <form id="chartForm">
-                  <div>
-                        <label for="chartMonth">Chart Month <br></label>   
-                        <select name="chartMonth" id="chartMonth">
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="chartYear"> Chart Year <br> </label>   
-                        <input type="number" step="1" name="chartYear" id="chartYear"/>
-                    </div>
-                    <div>
-                        <button type="button" onclick="chartTransactions()"> Chart Transactions</button>
-                    </div> 
-                </form>
-            </div>
-            <div id="listFormDiv">
-                <form id="listForm">
-                    <div>
-                        <label for="listMonth">List Month <br></label>   
-                        <select name="listMonth" id="listMonth">
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="listYear"> List Year <br> </label>   
-                        <input type="number" step="1" name="listYear" id="listYear"/>
-                    </div>
-                    <div>
-                        <button type="button" onclick="listTransactions()"> List Transactions </button>
-                    </div> 
-                </form>
-            </div>
-            <div id="yearAvgDiv">
-                <form id="yearAvgForm">
-                    <div>
-                        <label for="yearAvg">Chart Year<br></label>   
-                        <select id="yearAvg" name="yearAvg" id="yearAvgChart">
-                            <option value="2014">2014</option>
-                            <option value="2013">2013</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="avgCat"> Average Category (optional)</label>   
-                        <select id="avgCat" name="avgCat">
-                            <option value=""></option>
-                            <option value="groceries">Groceries</option>
-                            <option value="bills">Bills</option>
-                            <option value="gas">Gas</option>
-                            <option value="food">Food</option>
-                            <option value="misc">Miscellaneous (but needed)</option>
-                            <option value="fees">Fees</option>
-                            <option value="frivolous">Frivolous spending</option>
-                        </select>
-                    </div>
-                    <div>
-                        <button type="button" onclick="listYearAvg()"> List Year Average </button>
-                    </div> 
-                </form>
-            </div>
+            <div id="tabs-4">
+                <div id="yearAvgDiv">
+                    <form id="yearAvgForm">
+                        <div>
+                            <label for="yearAvg">Chart Year<br></label>   
+                            <select id="yearAvg" name="yearAvg" id="yearAvgChart">
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="avgCat"> Average Category (optional)</label>   
+                            <select id="avgCat" name="avgCat">
+                                <option value=""></option>
+                                <option value="groceries">Groceries</option>
+                                <option value="bills">Bills</option>
+                                <option value="gas">Gas</option>
+                                <option value="food">Food</option>
+                                <option value="misc">Miscellaneous (but needed)</option>
+                                <option value="fees">Fees</option>
+                                <option value="frivolous">Frivolous spending</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="button" onclick="listYearAvg()"> List Year Average </button>
+                        </div> 
+                    </form>
+                </div>
+                <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
+                    <div id="barchart" style="width: 700px; height: 500px;"></div>
+                    <div id="total2"> </div>
+                </div>
+            </div>    
         </div>
-        <div id="chartTableWrapper">
-            <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
-                <div id="piechart" style="width: 700px; height: 500px;"></div>
-                <div id="total"> </div>
-            </div>
-            <div style="display:inline-block">
-                <div id="transTableDiv" style="display:inline-block"></div>
-            </div>
-            <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
-                <div id="barchart" style="width: 700px; height: 500px;"></div>
-                <div id="total2"> </div>
-            </div>
-        </div>    
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function(){
+               $("#tabs").tabs(); 
+            });
+        </script>
+        <script src="https://www.google.com/jsapi"></script>
+        <script src="js/httpRequest.js"></script>
+        <script src="js/listTrans.js"></script>
+        <script src="js/chartTrans.js"></script>
+        <script src="js/listYearChart.js"></script>
+        <script src="js/validateTransForm.js"></script>
+        <script src="js/jquery.tablesorter.js"></script> 
+        <script src="js/jquery.tablesorter.pager.js"></script> 
         <script src="js/moment.js"></script>
         <script src="js/pikaday.js"></script>
         <script>
@@ -168,7 +187,6 @@ and open the template in the editor.
                 format: 'YYYY-MM-DD',
                 yearRange: [2000,2020]
             });
-            
             
         </script>
     </body>
