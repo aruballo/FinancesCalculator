@@ -2,8 +2,16 @@ body{
     background-color: gray;
 }
 
+#tabs-1, #tabs-2, #tabs-3, #tabs-4{
+    height: 800px;
+}
+
+#listFormDiv, #transTableDiv {
+    float:left;
+}
+
 #chartFormDiv, #listFormDiv, #yearAvgDiv{
-    position: relative;
+   // position: relative;
     background-color: white;
     border: 1px solid #CCC;
     border-radius: 1em;
