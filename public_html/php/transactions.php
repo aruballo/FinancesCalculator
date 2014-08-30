@@ -28,7 +28,7 @@
     if (!mysqli_query($con,$query)) {
       die('Error: ' . mysqli_error($con));
     }
-  header("Location: index.html");   
+  header("Location: ../index.html");   
   echo "Recorded Transaction";
 
   mysqli_close($con);
