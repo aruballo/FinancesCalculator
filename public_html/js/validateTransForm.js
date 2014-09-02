@@ -13,17 +13,29 @@ function validateTransForm(){
         alert("Please fill out the amount.");
         return false;
     }
+    else{
+        return true;
+    }
     if(category  == null || category == ""){
         alert("Please fill out the category.");
         return false;
     }
+    else{
+        return true;
+    }
     if(date == null || date == ""){
         alert("Please fill out the date.");
         return false;
-    }     
+    }
+    else{
+        return true;
+    }
     if(description == null || description == ""){
         alert("Please fill out the description.");
         return false;
+    }
+    else{
+        return true;
     }
     
 }

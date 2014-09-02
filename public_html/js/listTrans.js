@@ -1,7 +1,7 @@
 //List all transactions (according to month and year passed) 
 //and place them into a table.
 
-function listTransactions()
+function listTransactions(month)
 {
   var xmlHttp = getXMLHttp();
   var postString = '';
@@ -13,7 +13,13 @@ function listTransactions()
     }
   }
   
-  postString = "listMonth=" + document.getElementById("listMonth").value;
+  if(month){
+     postString = "listMonth=" + month;  
+  }
+  else{
+     postString = "listMonth=" + document.getElementById("listMonth").value;
+  }
+ 
   if(document.getElementById("chartYear").value > 0){
     postString += "&listYear=" + document.getElementById("listYear").value;
   }else{

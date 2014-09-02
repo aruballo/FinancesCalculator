@@ -15,6 +15,26 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/jquery-ui.css">
         <link rel="stylesheet" href="css/jquery-ui.theme.css">
         <link rel="stylesheet" href="css/jquery-ui.structure.css">
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function(){
+               $("#tabs").tabs(); 
+               $("#transSubmitBtn").button();
+               $("#chartTransBtn").button();
+               $("#listTransBtn").button();
+               $("#listYearBtn").button();
+               $.datepicker.setDefaults({
+                    showOn: "both",
+                    buttonImageOnly: true,
+                    buttonImage: "css/images/calendar-icon.png",
+                    buttonText: "Calendar",
+                    dateFormat: "yy-mm-dd"
+                    });
+               $("#transDate").datepicker();
+               
+            });
+        </script>
 
     </head>
     <body> 
@@ -27,15 +47,14 @@ and open the template in the editor.
             </ul>
             <div id="tabs-1">
                 <div id="transFormDiv">
-                    <form id="transForm" name="transForm" action="php/transactions.php" 
-                       method="post" onsubmit="return validateTransForm();">
+                    <form id="transForm" name="transForm">
                     <div>
-                        <label for="transAmt"> Transaction Amount </label>   
-                        <input type="number" step="any" name="transAmt"/>
+                        <label for="transAmt"> Transaction Amount <br></label>   
+                        <input type="number" step="any" id="transAmt" name="transAmt"/>
                     </div>
                     <div>
-                        <label for="transCat"> Transaction Category </label>   
-                        <select name="transCat">
+                        <label for="transCat"> Transaction Category <br></label>   
+                        <select name="transCat" id="transCat">
                             <option value="groceries">Groceries</option>
                             <option value="bills">Bills</option>
                             <option value="gas">Gas</option>
@@ -46,15 +65,15 @@ and open the template in the editor.
                         </select>
                     </div>
                     <div>
-                        <label for="datepicker">Transaction Date <br></label>
-                        <input type="text" id="datepicker" name="transDate">
+                        <label for="transDate">Transaction Date <br></label>
+                        <input type="text" id="transDate" name="transDate">
                     </div>    
                     <div>
-                        <label for="transDesc">Transaction Description </label>
-                        <textarea rows="6" cols="50" name="transDesc"></textarea>
+                        <label for="transDesc">Transaction Description <br></label>
+                        <textarea rows="6" cols="50" name="transDesc" id="transDesc"></textarea>
                     </div>
                     <div>
-                        <button id="transSubmitBtn" type="submit"> Record </button>
+                        <button id="transSubmitBtn" type="button" onclick="recordTransaction()">Record </button>
                     </div>    
                     </form>
                 </div>
@@ -90,7 +109,7 @@ and open the template in the editor.
                 </div>
                 <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
                     <div id="piechart" style="width: 700px; height: 500px;"></div>
-                    <div id="total"> </div>
+                    <div id="total"><strong>Total</strong>: $</div>
                 </div>
             </div>    
             <div id="tabs-3">
@@ -118,7 +137,7 @@ and open the template in the editor.
                             <input type="number" step="1" name="listYear" id="listYear"/>
                         </div>
                         <div>
-                            <button type="button" onclick="listTransactions()"> List Transactions </button>
+                            <button id="listTransBtn" type="button" onclick="listTransactions()"> List Transactions </button>
                         </div> 
                     </form>
                 </div>
@@ -138,7 +157,7 @@ and open the template in the editor.
                             </select>
                         </div>
                         <div>
-                            <label for="avgCat"> Average Category (optional)</label>   
+                            <label for="avgCat"> Average Category (optional) <br></label>   
                             <select id="avgCat" name="avgCat">
                                 <option value=""></option>
                                 <option value="groceries">Groceries</option>
@@ -151,47 +170,24 @@ and open the template in the editor.
                             </select>
                         </div>
                         <div>
-                            <button type="button" onclick="listYearAvg()"> List Year Average </button>
+                            <button id="listYearBtn" type="button" onclick="listYearAvg()"> List Year Average </button>
                         </div> 
                     </form>
                 </div>
                 <div style="display:inline-block; position: relative; width: 700px; height: 500px; vertical-align: top">
                     <div id="barchart" style="width: 700px; height: 500px;"></div>
-                    <div id="total2"> </div>
+                    <div id="total2"><strong>Total</strong>: $</div>
                 </div>
             </div>    
         </div>
-        <script src="js/jquery-2.1.1.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script>
-            $(document).ready(function(){
-               $("#tabs").tabs(); 
-               $("#transSubmitBtn").button();
-               $("#chartTransBtn").button();
-            });
-        </script>
         <script src="https://www.google.com/jsapi"></script>
         <script src="js/httpRequest.js"></script>
+        <script src="js/recordTrans.js"></script>
         <script src="js/listTrans.js"></script>
         <script src="js/chartTrans.js"></script>
         <script src="js/listYearChart.js"></script>
         <script src="js/validateTransForm.js"></script>
         <script src="js/jquery.tablesorter.js"></script> 
         <script src="js/jquery.tablesorter.pager.js"></script> 
-        <script src="js/moment.js"></script>
-        <script src="js/pikaday.js"></script>
-        <script>
-
-            var picker = new Pikaday(
-            {
-                field: document.getElementById('datepicker'),
-                firstDay: 1,
-                minDate: new Date('2000-01-01'),
-                maxDate: new Date('2020-12-31'),
-                format: 'YYYY-MM-DD',
-                yearRange: [2000,2020]
-            });
-            
-        </script>
     </body>
 </html>

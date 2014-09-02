@@ -39,19 +39,19 @@ function yearChartResponse(responseText){
     var parsed = JSON.parse(responseText);
     var array = [];
     
-    array.push(["Month","$"]);
-    array.push(['January',parsed.January]);
-    array.push(['February', parsed.February]);
-    array.push(['March', parsed.March]);
-    array.push(['April', parsed.April]);
-    array.push(['May', parsed.May]);
-    array.push(['June', parsed.June]);
-    array.push(['July', parsed.July]);
-    array.push(['August', parsed.August]);
-    array.push(['September', parsed.September]);
-    array.push(['October', parsed.October]);
-    array.push(['November', parsed.November]);
-    array.push(['December', parsed.December]);
+    array.push(["Month","$", { role: 'style' }]);
+    array.push(['January', parsed.January, 'green']);
+    array.push(['February', parsed.February, 'green']);
+    array.push(['March', parsed.March, 'green']);
+    array.push(['April', parsed.April, 'green']);
+    array.push(['May', parsed.May, 'green']);
+    array.push(['June', parsed.June, 'green']);
+    array.push(['July', parsed.July, 'green']);
+    array.push(['August', parsed.August, 'green']);
+    array.push(['September', parsed.September, 'green']);
+    array.push(['October', parsed.October, 'green']);
+    array.push(['November', parsed.November, 'green']);
+    array.push(['December', parsed.December, 'green']);
     
    //Create data table from the array
    var data = google.visualization.arrayToDataTable(array);

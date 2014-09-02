@@ -8,10 +8,10 @@
 
   date_default_timezone_set('America/Los_Angeles');
   
-  $transAmt = $_POST['transAmt'];
-  $transCat = $_POST['transCat'];
-  $transDesc = $_POST['transDesc'];
-  $transDate = $_POST['transDate'];
+  $transAmt = filter_input(INPUT_POST, 'transAmt', FILTER_VALIDATE_FLOAT);
+  $transCat = filter_input(INPUT_POST, 'transCat');
+  $transDesc = filter_input(INPUT_POST, 'transDesc', FILTER_SANITIZE_STRING);
+  $transDate = filter_input(INPUT_POST, 'transDate');
 
   $transAmt = mysqli_real_escape_string($con, $transAmt);
   $transCat = mysqli_real_escape_string($con, $transCat);

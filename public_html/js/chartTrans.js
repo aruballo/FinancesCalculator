@@ -1,14 +1,20 @@
 google.load("visualization", "1", {packages:["corechart"]});
 
-function chartTransactions()
+function chartTransactions(month)
 {
+  var postString = '';
   //Check if month is empty
-  if(document.getElementById("chartMonth").value === 0){
+  if(month){
+      postString = "chartMonth=" + month;  
+  }
+  else if(document.getElementById("chartMonth").value === 0){
       alert("Please select a Month to Chart. Year defaults to current year if left blank.");
       return;
-  }  
+  }
+  else{
+     postString = "chartMonth=" + document.getElementById("chartMonth").value;  
+  }
   var xmlHttp = getXMLHttp();
-  var postString = '';
   
   xmlHttp.onreadystatechange = function()
   {
@@ -19,7 +25,6 @@ function chartTransactions()
   }
   
   //post parameters to grab relevant data to chart
-  postString = "chartMonth=" + document.getElementById("chartMonth").value;
   if(document.getElementById("chartYear").value > 0){
     postString += "&chartYear=" + document.getElementById("chartYear").value;
   }else{
@@ -60,5 +65,6 @@ function ChartResponse(responseText){
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
         sum = parsed.groceries + parsed.bills + parsed.gas + parsed.food + parsed.misc + parsed.fees + parsed.frivolous;
-        document.getElementById('total').innerHTML = sum;
+        document.getElementById('total').innerHTML += sum;
+        document.getElementById('total').style.visibility = 'visible';
 }
