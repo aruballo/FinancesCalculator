@@ -5,18 +5,18 @@
     echo "<table id='transTable' style='width:700px' class='tablesorter'>" .
     "<thead>" .        
     "<tr>" . 
-    "<th>Transaction Amount</td>" .
-    "<th>Category</td>".
-    "<th>Description</td>".
-    "<th>Date Entered</td>".        
+    "<th>Transaction Amount</th>" .
+    "<th>Category</th>".
+    "<th>Description</th>".
+    "<th>Date Entered</th>".        
     "</tr>".
     "</thead>".
     "<tfoot>" .        
     "<tr>" . 
-    "<th>Transaction Amount</td>" .
-    "<th>Category</td>".
-    "<th>Description</td>".
-    "<th>Date Entered</td>".        
+    "<th>Transaction Amount</th>" .
+    "<th>Category</th>".
+    "<th>Description</th>".
+    "<th>Date Entered</th>".        
     "</tr>".
     "</tfoot>".            
     "<tbody>";        

@@ -27,12 +27,18 @@ function recordTransaction()
 }
 
 function recordResponse(responseText){
-    var date = new Date(document.getElementById("transDate").value);
+   
+   //Wanted all charts to recalculate automatically on transaction record. 
+   //google charts come out tiny atm if this is done though so for now its on hold. 
+   /* var date = new Date(document.getElementById("transDate").value);
     var month = date.getMonth();
+    month = month + 1;
     
     listTransactions(month);
     chartTransactions(month);
-    
+    listYearAvg();
+    */
+   
     //Clear the values now that they've been submitted.
     document.getElementById("transAmt").value = '';
     document.getElementById("transCat").value = '';

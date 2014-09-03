@@ -65,6 +65,6 @@ function ChartResponse(responseText){
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
         sum = parsed.groceries + parsed.bills + parsed.gas + parsed.food + parsed.misc + parsed.fees + parsed.frivolous;
-        document.getElementById('total').innerHTML += sum;
+        document.getElementById('total').innerHTML = "<b>Total</b>: $" + sum;
         document.getElementById('total').style.visibility = 'visible';
 }

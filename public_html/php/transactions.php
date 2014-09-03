@@ -17,11 +17,21 @@
   $transCat = mysqli_real_escape_string($con, $transCat);
   $transDesc = mysqli_real_escape_string($con, $transDesc);
   $transDate = mysqli_real_escape_string($con, $transDate);
-
+  
+  $query2 = "Select MAX(transid) from trans;";
+  $result = mysqli_query($con, $query2);
+  if($result){
+     $row = mysqli_fetch_row($result);
+     $id = $row[0] + 1; 
+  }
+  else{
+     $id = 0;
+  }
+  
   $query = "
-  INSERT INTO trans (`transamt`, `transcat`, `transdesc`, `transdate`)
+  INSERT INTO trans (`transamt`, `transcat`, `transdesc`, `transdate`, `transid`)
         VALUES ('$transAmt',
-        '$transCat', '$transDesc', '$transDate'
+        '$transCat', '$transDesc', '$transDate', '$id'
         );";
 
   
