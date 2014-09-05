@@ -5,18 +5,22 @@
     echo "<table id='transTable' style='width:700px' class='tablesorter'>" .
     "<thead>" .        
     "<tr>" . 
+    "<th>ID</th>".        
     "<th>Transaction Amount</th>" .
     "<th>Category</th>".
     "<th>Description</th>".
-    "<th>Date Entered</th>".        
+    "<th>Date Entered</th>".
+    "<th>Options</th>".
     "</tr>".
     "</thead>".
     "<tfoot>" .        
-    "<tr>" . 
+    "<tr>" .
+    "<th>ID</th>".        
     "<th>Transaction Amount</th>" .
     "<th>Category</th>".
     "<th>Description</th>".
-    "<th>Date Entered</th>".        
+    "<th>Date Entered</th>". 
+    "<th>Options</th>".
     "</tr>".
     "</tfoot>".            
     "<tbody>";        
@@ -36,12 +40,18 @@
     $result = mysqli_query($con, $query);
     if($result){
         while($row = mysqli_fetch_row($result)){
-           echo "<tr> ";
-           echo "<td> " . $row[0] . "</td>";
-           echo "<td> " . $row[1] . "</td>";
-           echo "<td> " . $row[2] . "</td>"; 
-           echo "<td> " . $row[3] . "</td>"; 
-           echo "<tr> ";
+           if($row[5] == 0){ 
+              echo "<tr> ";
+              echo "<td> " . $row[4] . "</td>";
+              echo "<td> " . $row[0] . "</td>";
+              echo "<td> " . $row[1] . "</td>";
+              echo "<td> " . $row[2] . "</td>"; 
+              echo "<td> " . $row[3] . "</td>";
+              echo "<td> "
+                  . "<button type='button' name='deleteTrans' id='deleteTrans' onclick='deleteTransaction(". $row[4] .");'>Delete</button>"
+                  . "</td>"; 
+              echo "<tr> ";
+            }  
         }
         mysqli_free_result($result);
     }
