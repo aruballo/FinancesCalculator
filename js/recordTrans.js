@@ -44,5 +44,7 @@ function recordResponse(responseText){
     document.getElementById("transCat").value = '';
     document.getElementById("transDate").value = '';
     document.getElementById("transDesc").value = '';
+    document.getElementById("transAmt").focus();
+    alert("Transaction Recorded!")
    
 }

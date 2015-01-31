@@ -26,7 +26,7 @@
     "<tbody>";        
             
     
-    $con = mysqli_connect("localhost","aruballos","rubanto20", "transactions");
+    $con = mysqli_connect("localhost","finances","K1lla56", "transactions");
 
     if (mysqli_connect_errno()){
       echo 'Could not connect: ' . mysqli_connect_error();
